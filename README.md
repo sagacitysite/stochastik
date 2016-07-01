@@ -1,2 +1,1 @@
-# stochastik
-Übersicht Stochastik I
+# Stochastik I Übersicht
