@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2.5cm]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{BOONDOX-cal}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{8pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{document}
+
+\section{Maßtheorie}
+
+\subsubsection*{Algebra und Maß}
+
+\begin{itemize}
+\item Eine \emph{Algebra} $\mathcal{A}$ auf $A$ ist ein Mengensystem, das $A$ enthält und abgeschlossen/stabil ist bzgl. paarweiser Vereinigung und Komplementbildung.
+\item Ein \emph{Prämaß} auf $\mathcal{A}$ ist eine Funktion $\mu_A : \mathcal{A} \to \mathbb{\bar{R}_+}$, für die $\mu(\emptyset) = 0$ und $\sigma$-Additivität gilt.
+\item Eine $\sigma$-\emph{Algebra} $\mathcal{B}$ auf $B$ ist ein Mengensystem, das $B$ entäkt und abgeschlossen/stabil ist bzgl. abzählbar unendlicher Vereinigung und Komplementbildung.
+\item Ein \emph{Maß} auf $\mathcal{B}$ ist eine Funktion $\mu_B : \mathcal{B} \to \mathbb{\bar{R}_+}$, für die $\mu(\emptyset) = 0$ und $\sigma$-Additivität gilt.
+\end{itemize}
+
+\subsubsection*{Eigenschaften}
+
+Sei $\mathcal{F}$ $\sigma$-Algebra auf $\Omega$, $A \in \mathcal{F}$, $(A_n)$ Folge von Teilmengen von $\Omega$ (d.h. $A_n \in \mathcal{F}$) und $\mu$ Maß.
+
+\begin{tabular}{ll}
+Messbarer Raum & $(\Omega, \mathcal{F})$ \\
+$\sigma$-Additivität & $\mu(\bigcup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \mu(A_n)$ \\
+$\sigma$-Stetigkeit & $\mu(A) = \lim_{n \to \infty} \mu(A_n)$, wobei $A_n \nearrow A$, d.h. $A_n \subseteq A_{n+1}$ und $\bigcup_n A_n = A$ \\
+& \\
+Endliches Maß & $\mu(\Omega) < \infty$ \\
+$\sigma$-endliches Maß & $\Omega = \bigcup_{n=1}^\infty A_n$ und $\mu(A_n) < \infty$ \\
+W-Maß & $\mu(\Omega) = 1$ \\
+\end{tabular}
+
+\subsubsection*{Messbare Abbildungen}
+
+Seien $(\Omega, \mathcal{F})$ und $(S, \mathcal{S})$ messbare Räume und $f: \Omega \to \mathcal{F}$ eine Abbildung.
+
+\begin{tabular}{ll}
+$(\mathcal{F},\mathcal{S})$-messbare Abbildung & $f^{-1}(B) \in \mathcal{F}$ für alle $B \in \mathcal{S}$ \\
+Borel-messbare Abbildung & $(S,\mathcal{S}) = (\mathbb{R},\mathcal{B}(\mathbb{R}))$ \\
+\end{tabular}
+
+Alle stetigen Funktionen sind Borel-messbar.
+
+\section{Wahrscheinlichkeitsräume}
+
+\subsection{Grundlagen}
+
+\begin{tabular}{ll}
+$\Omega$ & \emph{Ergebnismenge}, wobei $\omega_i \in \Omega$ \emph{Ergebnis} (Grundmenge)\\
+$\mathcal{F}$ & \emph{Ereignissystem}, wobei $A \in \mathcal{F}$ \emph{Ereignis} ($\sigma$-Algebra über der Grundmenge $\Omega$, d.h. $\mathcal{F} = \sigma(\Omega)$) \\
+$(\Omega, \mathcal{F})$ & \emph{Ereignisraum} (Messraum, messbarer Raum) \\
+$\mathbb{P}$ & \emph{Wahrscheinlichkeitsmaß} (Maß) \\
+$(\Omega, \mathcal{F}, \mathbb{P})$ & \emph{Wahrscheinlichkeitsraum} (Maßraum) \\
+& \\
+$X$ & $(S,\mathcal{S})$-wertige \emph{Zufallsvariable}, wobei $X: \Omega \to S$ (Abbidung) \\
+$(S,\mathcal{S})$ & Messraum mit Grundmenge $S$ und $\sigma$-Algebra $\mathcal{S} = \sigma(S)$\\
+$\mathbb{P^X}$ & \emph{Wahrscheinlichkeitsverteilung} (von $\mathbb{P}$ induziertes Maß) \\
+$(S,\mathcal{S},\mathbb{P}^X)$ & Maßraum, wobei das enthaltene Maß der Wahrscheinlichkeitsverteilung entspricht \\
+\end{tabular}
+
+Für eine Zufallsvariable $X$ und die $\sigma$-Algebren $\mathcal{F}$ und $\mathcal{S}$ gilt:
+
+\begin{tabular}{llcl}
+Für & $A \in \mathcal{F}$ & gilt & $X(A) \in \mathcal{S}$ \\
+Für & $B \in \mathcal{S}$ & gilt & $X^{-1}(B) \in \mathcal{F}$, wobei $X^{-1}(B) = \{\omega \in \Omega : X(\omega) \in B\}$ \\
+\end{tabular}
+
+Für das Wahrscheinlichkitsmaß $\mathbb{P}$ und die Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ gilt:
+
+\begin{tabular}{llcl}
+Für & $A \in \mathcal{F}$ & gilt & $\mathbb{P}(A) = \mathbb{P}^X \circ X(A) = \mathbb{P}^X(X(A))$ \\
+Für & $B \in \mathcal{S}$ & gilt & $\mathbb{P^X}(B) = \mathbb{P} \circ X^{-1}(B) = \mathbb{P}(X^{-1}(B)) = \mathbb{P}(\{\omega \in \Omega : X(\omega) \in B\}) = \mathbb{P}(\{X \in B\}) \overset{kurz}{=} \mathbb{P}(X \in B)$ \\
+\end{tabular}
+
+Zusammengefasst gilt:
+
+$(S, \mathcal{S}, \mathbb{P}^X) \overset{X^{-1}}{\underset{X}{\longleftrightarrow}} (\Omega, \mathcal{F}, \mathbb{P}) \overset{\mathbb{P}}{\longrightarrow} [0,1]$
+
+Für den \glqq direkten\grqq\ Weg unter Verwendung der Wahrscheinlichkeitsverteilung gilt: $(S,\mathcal{S},\mathbb{P}) \overset{\mathbb{P}^X}{\longrightarrow} [0,1]$
+
+\subsection{Wahrscheinlichkeitsverteilung, -dichte und Verteilungsfunktion}
+
+\subsubsection*{Diskreter Wahrscheinlichkeitsraum}
+
+Diskreter Wahrscheinlichkeitsraum, falls $\Omega$ endlich oder abzählbar unendlich.
+
+Sei $\omega \in \Omega$ und $s \in S$, sowie $A \in \mathcal{F}$ und $B \in \mathcal{S}$ dann gilt mit einer \emph{Wahrscheinlickeitsdichtefunktion}, auch kurz Wahrscheinlichkeitsdichte $p$ bzw. $p^X$ (entspricht \emph{Zähldichte} im diskreten Fall):
+
+\begin{tabular}{ll}
+$\mathbb{P}(\{\omega\}) = p(\omega)$ & Zähldichte $p(\omega)$ bestimmt $\mathbb{P}$ eindeutig bzgl. diskretem Wahrscheinlichkeitsraum\\
+$\mathbb{P}(A) = \sum_{\omega \in A} p(\omega) \mathbbm{1}_A(\omega)$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit Zähldichte $p(\omega)$ und Zählmaß $\mathbbm{1}_A(\omega)$ \\
+$\mathbb{P}^X(\{s\}) = p^X(s)$ & Zähldichte $p^X(s)$ bestimmt $\mathbb{P}^X$ eindeutig bzgl. diskret verteilter $(S,\mathcal{S})$-wertiger ZV\\
+$\mathbb{P}^X(B) = \sum_{s \in B} p^X(s) \mathbbm{1}_A(s)$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit Zähldichte $p^X(s)$ und Zählmaß $\mathbbm{1}_A(s)$ \\
+\end{tabular}
+
+dabei gilt $\mathbb{P}(\Omega) = \sum_{\omega \in \Omega} p(\omega) = 1$ und $\mathbb{P}^X(S) = \sum_{s \in S} p(s) = 1$
+
+Für eine Zufallsvariable $X$ gilt für die \emph{Verteilungsfunktion} $F$:
+
+$F(B) = \sum_{s \in B} \mathbb{P}(\{X = s\}) = \sum_{s \in B} \mathbb{P}^X(\{s\}) = \sum_{s \in B} p^X(s)$
+
+\subsubsection*{Stetiger Wahrscheinlichkeitsraum}
+
+Stetiger Wahrscheinlichkeitsraum, falls $\Omega$ überabzählbar.
+
+$A \in \mathcal{F}$ und $B \in \mathcal{S}$ dann gilt mit einer \emph{Wahrscheinlickeitsdichtefunktion} $p$ bzw. $p^X$:
+
+\begin{tabular}{ll}
+$\mathbb{P}(A) = \int_A p(\omega)\, \mu(d\omega)$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit W-Dichtefkt. $p(\omega)$ und Lebesque-Maß $\mu$ \\
+$\mathbb{P}^X(B) = \int_{B} p^X(s)\, \mu(ds)$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit W-Dichtefkt. $p^X(s)$ und Lebesque-Maß $\mu$ \\
+\end{tabular}
+
+dabei gilt $\mathbb{P}(\Omega) = \int_{\Omega} p(\omega) \mu(d\omega) = 1$ und $\mathbb{P}^X(S) = \int_{S} p(s) \mu(ds) = 1$
+
+\subsubsection*{Stetiger reeller Wahrscheinlichkeitsraum}
+
+Spezialfall ($\Omega,\mathcal{F}) = (\mathbb{R}, \mathcal{B}(\mathbb{R}))$:
+
+$(a_1,a_2] \in \mathcal{F}$ und $(b_1,b_2] \in \mathcal{S}$ dann gilt mit einer \emph{Wahrscheinlickeitsdichtefunktion} $f$ bzw. $f^X$:
+
+\begin{tabular}{ll}
+$\mathbb{P}((a_1,a_2]) = \int_{a_1}^{a_2} f(x)\, dx$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit W-Dichtefkt. $f(x)$ \\
+$\mathbb{P}^X((b_1,b_2]) = \int_{b_1}^{b_2} f^X(x)\, dx$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit W-Dichtefkt. $f^X(x)$ \\
+\end{tabular}
+
+Für eine Zufallsvariable $X \in \mathbb{R}$ gilt für die \emph{Verteilungsfunktion} $F$:
+
+$F(x) = \mathbb{P}(\{X \le x\}) = \mathbb{P}^X((-\infty,x]) = \int_{-\infty}^x f^X(x)\, dx$
+
+%\subsection{Transformationssatz ?}
+
+\section{Unabhängigkeit}
+
+Seien $(\Omega_1, \mathcal{F_1})$ und $(\Omega_2, \mathcal{F_2})$ Ereignisräume, sowie $(S_1, \mathcal{S_1})$ und $(S_2, \mathcal{S_2})$ messbare Räume, $X_1: \Omega_1 \longrightarrow S_1$ und $X_2: \Omega_2 \longrightarrow S_2$ Zufallsvariablen.
+
+\begin{tabular}{lll}
+Ereignisse & $A_1$ und $A_2$ unabhängig, wenn & $\mathbb{P}(A_1 \cap A_2) = \mathbb{P}(A_1) \cdot \mathbb{P}(A_2)$ für $A_1,A_2 \in \mathcal{F_1}$ \\
+$\sigma$-Algebren & $\mathcal{F_1}$ und $\mathcal{F_2}$ unabhängig, wenn & $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$ für alle $A \in \mathcal{F_1}$, $B \in \mathcal{F_2}$ \\
+Zufallsvariablen & $X_1$ und $X_2$ unabhängig, wenn &  $\sigma$-Algebren $X^{-1}_1(\mathcal{S_1})$ und $X^{-1}_2(\mathcal{S_2})$ unabhängig \\
+\end{tabular}
+
+\section{Konvergenzen}
+
+\begin{tabular}{lll}
+Fast sichere Konvergenz & $X_n \overset{f.s.}{\longrightarrow} X$ & $\mathbb{P}(\{\omega \in \Omega : \lim_{n \to \infty} X_n(\omega) = X(\omega)\}) = 1$ \\
+Konvergenz im $p$-ten Mittel & $X_n \overset{L_p}{\longrightarrow} X$ & $\lim_{n \to \infty} \mathbb{E}[|X_n-X|^p] = 0$ \\
+Konvergenz im quadr. Mittel & $X_n \overset{L_2}{\longrightarrow} X$ & $\lim_{n \to \infty} \mathbb{E}[(X_n-X)^2] = 0$ (Spezialfall) \\
+Stochastische Konvergenz & $X_n \overset{\mathbb{P}}{\longrightarrow} X$ & $\lim_{n \to \infty} \mathbb{P}(\{|X_n-X| > \epsilon\}) = 0$ \\
+Konvergenz in Verteilung & $X_n \overset{d}{\longrightarrow} X$ & $\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$ bzw. $\lim_{n \to \infty} \mathbb{E}[\varphi(X_n)] = \mathbb{E}[\varphi(X)]$ \\
+\end{tabular}
+
+\subsubsection*{Beziehungen}
+
+Fast sicher $\Longrightarrow$ Stochastisch $\Longrightarrow$ In Verteilung
+
+Im $p$-ten Mittel $\Longrightarrow$ Stochastisch $\Longrightarrow$ In Verteilung
+
+Fast sicher $\not\Longleftrightarrow$ Im $p$-ten Mittel
+
+% Gesetz der großen Zahlen ??
+
+%\section{Ungleichungen ?}
+
+\end{document}
