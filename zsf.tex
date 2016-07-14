@@ -35,7 +35,7 @@ $\sigma$-Stetigkeit & $\mu(A) = \lim_{n \to \infty} \mu(A_n)$, wobei $A_n \nearr
 & \\
 Endliches Maß & $\mu(\Omega) < \infty$ \\
 $\sigma$-endliches Maß & $\Omega = \bigcup_{n=1}^\infty A_n$ und $\mu(A_n) < \infty$ \\
-W-Maß & $\mu(\Omega) = 1$ \\
+W-Maß & $\mu(\Omega) = 1$ und $\sigma$-Additivität für paarweise disjunkte $A_n \in \mathcal{F}$ (Kolmogorov Axiome) \\
 \end{tabular}
 
 \subsubsection*{Messbare Abbildungen}
@@ -82,9 +82,7 @@ Für & $B \in \mathcal{S}$ & gilt & $\mathbb{P^X}(B) = \mathbb{P} \circ X^{-1}(B
 
 Zusammengefasst gilt:
 
-$(S, \mathcal{S}, \mathbb{P}^X) \overset{X^{-1}}{\underset{X}{\longleftrightarrow}} (\Omega, \mathcal{F}, \mathbb{P}) \overset{\mathbb{P}}{\longrightarrow} [0,1]$
-
-Für den \glqq direkten\grqq\ Weg unter Verwendung der Wahrscheinlichkeitsverteilung gilt: $(S,\mathcal{S},\mathbb{P}) \overset{\mathbb{P}^X}{\longrightarrow} [0,1]$
+$[0,1] \overset{\mathbb{P}}{\longleftarrow} (\Omega, \mathcal{F}, \mathbb{P}) \overset{X^{-1}}{\longleftarrow} (S, \mathcal{S}, \mathbb{P}^X) \overset{\mathbb{P}^X}{\longrightarrow} [0,1]$
 
 \subsection{Wahrscheinlichkeitsverteilung, -dichte und Verteilungsfunktion}
 
@@ -96,16 +94,16 @@ Sei $\omega \in \Omega$ und $s \in S$, sowie $A \in \mathcal{F}$ und $B \in \mat
 
 \begin{tabular}{ll}
 $\mathbb{P}(\{\omega\}) = p(\omega)$ & Zähldichte $p(\omega)$ bestimmt $\mathbb{P}$ eindeutig bzgl. diskretem Wahrscheinlichkeitsraum\\
-$\mathbb{P}(A) = \sum_{\omega \in A} p(\omega) \mathbbm{1}_A(\omega)$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit Zähldichte $p(\omega)$ und Zählmaß $\mathbbm{1}_A(\omega)$ \\
+$\mathbb{P}(A) = \sum_{\omega \in \Omega} p(\omega) \mathbbm{1}_A(\omega)$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit Zähldichte $p(\omega)$ und Zählmaß $\mathbbm{1}_A(\omega)$ \\
 $\mathbb{P}^X(\{s\}) = p^X(s)$ & Zähldichte $p^X(s)$ bestimmt $\mathbb{P}^X$ eindeutig bzgl. diskret verteilter $(S,\mathcal{S})$-wertiger ZV\\
-$\mathbb{P}^X(B) = \sum_{s \in B} p^X(s) \mathbbm{1}_A(s)$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit Zähldichte $p^X(s)$ und Zählmaß $\mathbbm{1}_A(s)$ \\
+$\mathbb{P}^X(B) = \sum_{s \in S} p^X(s) \mathbbm{1}_A(s)$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit Zähldichte $p^X(s)$ und Zählmaß $\mathbbm{1}_A(s)$ \\
 \end{tabular}
 
 dabei gilt $\mathbb{P}(\Omega) = \sum_{\omega \in \Omega} p(\omega) = 1$ und $\mathbb{P}^X(S) = \sum_{s \in S} p(s) = 1$
 
 Für eine Zufallsvariable $X$ gilt für die \emph{Verteilungsfunktion} $F$:
 
-$F(B) = \sum_{s \in B} \mathbb{P}(\{X = s\}) = \sum_{s \in B} \mathbb{P}^X(\{s\}) = \sum_{s \in B} p^X(s)$
+$F(x) = \mathbb{P}(\{ X \le x \}) = \sum_{k=1}^{\lfloor x \rfloor} \mathbb{P}(\{ X = k \})$
 
 \subsubsection*{Stetiger Wahrscheinlichkeitsraum}
 
@@ -114,11 +112,11 @@ Stetiger Wahrscheinlichkeitsraum, falls $\Omega$ überabzählbar.
 $A \in \mathcal{F}$ und $B \in \mathcal{S}$ dann gilt mit einer \emph{Wahrscheinlickeitsdichtefunktion} $p$ bzw. $p^X$:
 
 \begin{tabular}{ll}
-$\mathbb{P}(A) = \int_A p(\omega)\, \mu(d\omega)$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit W-Dichtefkt. $p(\omega)$ und Lebesque-Maß $\mu$ \\
-$\mathbb{P}^X(B) = \int_{B} p^X(s)\, \mu(ds)$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit W-Dichtefkt. $p^X(s)$ und Lebesque-Maß $\mu$ \\
+$\mathbb{P}(A) = \int_A p(\omega)\, \lambda(d\omega)$ & Wahrscheinlichkeitsmaß $\mathbb{P}$ mit W-Dichtefkt. $p(\omega)$ und Lebesque-Maß $\lambda$ \\
+$\mathbb{P}^X(B) = \int_{B} p^X(s)\, \lambda(ds)$ & Wahrscheinlichkeitsverteilung $\mathbb{P}^X$ mit W-Dichtefkt. $p^X(s)$ und Lebesque-Maß $\lambda$ \\
 \end{tabular}
 
-dabei gilt $\mathbb{P}(\Omega) = \int_{\Omega} p(\omega) \mu(d\omega) = 1$ und $\mathbb{P}^X(S) = \int_{S} p(s) \mu(ds) = 1$
+dabei gilt $\mathbb{P}(\Omega) = \int_{\Omega} p(\omega) \lambda(d\omega) = 1$ und $\mathbb{P}^X(S) = \int_{S} p(s) \lambda(ds) = 1$
 
 \subsubsection*{Stetiger reeller Wahrscheinlichkeitsraum}
 
@@ -133,9 +131,66 @@ $\mathbb{P}^X((b_1,b_2]) = \int_{b_1}^{b_2} f^X(x)\, dx$ & Wahrscheinlichkeitsve
 
 Für eine Zufallsvariable $X \in \mathbb{R}$ gilt für die \emph{Verteilungsfunktion} $F$:
 
-$F(x) = \mathbb{P}(\{X \le x\}) = \mathbb{P}^X((-\infty,x]) = \int_{-\infty}^x f^X(x)\, dx$
+$F(x) = \mathbb{P}(\{X \le x\}) = \mathbb{P}^X((-\infty,x]) = \int_{(-\infty,x]} d\mathbb{P}^X = \int_{(-\infty,x]} d(\mathbb{P}\circ X^{-1}) = \int_{(-\infty,x]} f^X(x)\,\lambda(dx) = \int_{-\infty}^x f^X(x)\, dx$
 
-%\subsection{Transformationssatz ?}
+\subsection{Häufige W-Dichten, W-Verteilungen und Verteilungsfunktionen}
+
+\subsubsection*{Diskrete Gleichverteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsmaß & $\mathbb{P}(A) = \frac{|A|}{|S|}$ \\
+Wahrscheinlichkeitsdichte & $p_{U(S)}(k) = \mathbb{P}(\{X = k\}) = \frac{1}{|S|}$ \\
+Verteilungsfunktion & $F_{U(S)}(x) = \mathbb{P}(\{X \le x\}) = \frac{|\{i:\, k_i \le x\}|}{|S|}$ \\
+\end{tabular}
+
+\subsubsection*{Bernoulli-Schema}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $p_{B(p)}(k) = \mathbb{P}(\{X = k\}) = p^k\,(1-p)^{n-k}$ \\
+\end{tabular}
+
+\subsubsection*{Binomialverteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $p_{B(n,p)}(k) = \mathbb{P}(\{X = k\}) = \binom{n}{k}\,p^k\,(1-p)^{n-k}$ \\
+Verteilungsfunktion & $F_{B(n,p)}(x) = \mathbb{P}(\{X \le x\}) = \sum_{k=0}^{\lfloor x \rfloor} \binom{n}{k}\,p^k\,(1-p)^{n-k}$ \\
+\end{tabular}
+
+\subsubsection*{Geometrische Verteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $p_{G(n,p)}(k) = \mathbb{P}(\{X = k\}) = p\,(1-p)^{n-1}$ \\
+Verteilungsfunktion & $F_{G(n,p)}(x) = \mathbb{P}(\{X \le x\}) = p\, \sum_{k=0}^{\lfloor x \rfloor} (1-p)^{n-1} \overset{x\;\text{diskret}}{=} 1-(1-p)^n $ \\
+\end{tabular}
+
+\subsubsection*{Poissonverteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $p_{P(\lambda)}(k) = \mathbb{P}(\{X = k\}) = \frac{\lambda^k}{k!}\, e^{-\lambda}$ \\
+Verteilungsfunktion & $F_{P(\lambda)}(x) = \mathbb{P}(\{X \le x\}) =  e^{-\lambda}\, \sum_{k=0}^{\lfloor x \rfloor} \frac{\lambda^k}{k!}$ \\
+\end{tabular}
+
+\subsubsection*{Stetige Gleichverteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $f_{U(A)}(x) = \mathbb{P}(\{X \in A\}) = \frac{1}{\lambda(A)}\, \mathbbm{1}_A(x)$, $A \in \mathcal{B}(\mathbb{R})$ \\
+W-Dichte für Intervalle & $f_{U([a,b])}(x) = \frac{1}{b-a}\, \mathbbm{1}_{[a,b]}(x)$, $a < b \in \mathbb{R}$ \\
+Verteilungsfunktion & $F_{U([a,b])}(x) = \mathbb{P}(\{X \le x\}) = \frac{x-a}{b-a}\, \mathbbm{1}_{[a,b]}(x) + \mathbbm{1}_{(b,\infty)}(x)$ \\
+\end{tabular}
+
+\subsubsection*{Expoentialverteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $f_{E(\lambda)}(x) = \lambda\,e^{-\lambda x}\, \mathbbm{1}_{[0,\infty)}(x)$ \\
+Verteilungsfunktion & $F_{E(\lambda)}(x) = \mathbb{P}(\{X \le x\}) = \int_0^{\infty} \lambda\,e^{-\lambda x}\, dx = (1 - e^{-\lambda x})\, \mathbbm{1}_{[0,\infty)}(x)$ \\
+\end{tabular}
+
+\subsubsection*{Normalverteilung}
+
+\begin{tabular}{ll}
+Wahrscheinlichkeitsdichte & $f_{N(\mu,\sigma)}(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\, \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)$ \\
+Verteilungsfunktion & $F_{N(\mu,\sigma)}(x) = \mathbb{P}(\{X \le x\}) = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi \sigma^2}}\, \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right) = \Phi(\frac{x-\mu}{\sigma})$ \\
+\end{tabular}
 
 \section{Unabhängigkeit}
 
@@ -153,20 +208,55 @@ Zufallsvariablen & $X_1$ und $X_2$ unabhängig, wenn &  $\sigma$-Algebren $X^{-1
 Fast sichere Konvergenz & $X_n \overset{f.s.}{\longrightarrow} X$ & $\mathbb{P}(\{\omega \in \Omega : \lim_{n \to \infty} X_n(\omega) = X(\omega)\}) = 1$ \\
 Konvergenz im $p$-ten Mittel & $X_n \overset{L_p}{\longrightarrow} X$ & $\lim_{n \to \infty} \mathbb{E}[|X_n-X|^p] = 0$ \\
 Konvergenz im quadr. Mittel & $X_n \overset{L_2}{\longrightarrow} X$ & $\lim_{n \to \infty} \mathbb{E}[(X_n-X)^2] = 0$ (Spezialfall) \\
-Stochastische Konvergenz & $X_n \overset{\mathbb{P}}{\longrightarrow} X$ & $\lim_{n \to \infty} \mathbb{P}(\{|X_n-X| > \epsilon\}) = 0$ \\
+Stochastische Konvergenz & $X_n \overset{\mathbb{P}}{\longrightarrow} X$ & $\forall\, \epsilon > 0:\, \lim_{n \to \infty} \mathbb{P}(\{|X_n-X| > \epsilon\}) = 0$ \\
 Konvergenz in Verteilung & $X_n \overset{d}{\longrightarrow} X$ & $\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$ bzw. $\lim_{n \to \infty} \mathbb{E}[\varphi(X_n)] = \mathbb{E}[\varphi(X)]$ \\
+Schwache Konvergenz & $\mathbb{P}^{X^n} \overset{w}{\longrightarrow} \mathbb{P}$ &  $\lim_{n \to \infty} \int_{\mathbb{R}^d} \varphi(x)\, \mathbb{P}_n(dx) = \int_{\mathbb{R}^d} \varphi(x)\, \mathbb{P}(dx)$ \\
 \end{tabular}
+
+Stochastische Konvergenz wird auch als Konvergenz in Wahrscheinlichkeit bezeichnet.
 
 \subsubsection*{Beziehungen}
 
-Fast sicher $\Longrightarrow$ Stochastisch $\Longrightarrow$ In Verteilung
+Konvergenz in Verteilung $\Leftrightarrow$ Schwache Konvergenz
 
-Im $p$-ten Mittel $\Longrightarrow$ Stochastisch $\Longrightarrow$ In Verteilung
+Fast sicher $\Rightarrow$ Stochastisch $\Rightarrow$ In Verteilung
 
-Fast sicher $\not\Longleftrightarrow$ Im $p$-ten Mittel
+Im $p$-ten Mittel $\Rightarrow$ Stochastisch $\Rightarrow$ In Verteilung
 
-% Gesetz der großen Zahlen ??
+Fast sicher $\not\Leftrightarrow$ Im $p$-ten Mittel
 
-%\section{Ungleichungen ?}
+\section{Formeln}
+
+\subsubsection*{Vandermondesche Identität}
+
+\[ \sum_{k=0}^n \binom{M}{k} \binom{N}{n-k} = \binom{M+N}{n} \]
+
+\subsubsection*{Binomischer Lehrsatz}
+
+\[ (x+y)^n = \sum_{k=0}^n \binom{n}{k}\, x^n\, y^{n-k} \]
+
+\subsubsection*{Gauß-Integral}
+
+\[ \int_{-\infty}^{\infty} \exp\left( -\frac{x^2}{2} \right)\, dx = \sqrt{2\pi} \]
+
+\subsubsection*{Imaginäres Exponential-Integral}
+
+\[ \int_{-a}^{a} e^{iux}\, dx = \frac{2\, \sin(au)}{u} \]
+
+\subsubsection*{Reihen}
+
+\[ \sum_{n=0}^{\infty} \frac{x^n}{n!} = e^x \qquad \text{(Exponentialreihe)}\]
+
+\[ \sum_{n=0}^{\infty} x^n = \frac{1}{1-x},\; |x|<1 \qquad \text{(Geometrische Reihe)} \]
+
+\subsubsection*{Gamma-Funktion}
+
+\[ \Gamma(x) = \int_0^{\infty} t^{x-1}\,e^{-t}\,dt \]
+
+\[ \text{Es gilt:} \quad \Gamma(\frac{1}{2}) = \sqrt{\pi}, \quad \Gamma(x+1) = x!, \quad \Gamma(x+1) = x\,\Gamma(x), \quad \Gamma(1) = 1 \]
+
+\subsubsection*{Dreiecksungleichung}
+
+\[ |a+b| \le |a| + |b|, \qquad \biggm| \sum_{i=1}^n x_i \biggm| \le \sum_{i=1}^n |x_i|, \qquad \biggm| \int_I f(x)\,dx \biggm| \le \int_I |f(x)| \]
 
 \end{document}
